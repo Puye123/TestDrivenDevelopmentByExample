@@ -18,5 +18,11 @@ namespace TestDrivenDevelopmentByExample
         {
             return new Dollar(amount * multiplier);
         }
+
+        public bool equals(Object obj)
+        {
+            Dollar dollar = (Dollar)obj;
+            return amount == dollar.amount;
+        }
     }
 }

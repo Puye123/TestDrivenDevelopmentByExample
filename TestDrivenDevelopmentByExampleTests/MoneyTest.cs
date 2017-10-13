@@ -21,6 +21,11 @@ namespace TestDrivenDevelopmentByExample.Tests
             Assert.AreEqual(15, product.amount);
         }
 
-       
+        [TestMethod()]
+        public void testEquality()
+        {
+            Assert.IsTrue(new Dollar(5).equals(new Dollar(5)));
+            Assert.IsFalse(new Dollar(5).equals(new Dollar(6)));
+        }
     }
 }
