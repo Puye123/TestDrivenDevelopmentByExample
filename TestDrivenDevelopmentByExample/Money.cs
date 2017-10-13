@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace TestDrivenDevelopmentByExample
 {
-    public class Money
+    public abstract class Money
     {
         protected internal int amount;
+        public abstract Money times(int multiplier);
         public override Boolean Equals(Object obj)
         {
             Money money = (Money)obj;
@@ -18,6 +19,16 @@ namespace TestDrivenDevelopmentByExample
         public override int GetHashCode()
         {
             return this.amount;
+        }
+
+        public static Money dollar(int amount)
+        {
+            return new Dollar(amount);
+        }
+
+        public static Franc franc(int amount)
+        {
+            return new Franc(amount);
         }
     }
 }
