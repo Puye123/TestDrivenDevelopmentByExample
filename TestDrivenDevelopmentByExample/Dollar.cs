@@ -14,15 +14,24 @@ namespace TestDrivenDevelopmentByExample
             this.amount = amount;
         }
 
+        public Dollar()
+        {
+        }
+
         public Dollar times(int multiplier)
         {
             return new Dollar(amount * multiplier);
         }
 
-        public bool equals(Object obj)
+        public override bool Equals(Object obj)
         {
             Dollar dollar = (Dollar)obj;
             return amount == dollar.amount;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.amount;
         }
     }
 }
