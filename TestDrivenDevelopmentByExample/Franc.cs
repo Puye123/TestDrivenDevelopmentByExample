@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TestDrivenDevelopmentByExample
 {
-    public class Franc
+    public class Franc : Money
     {
-        private int amount;
         public Franc(int amount)
         {
             this.amount = amount;
@@ -21,17 +20,6 @@ namespace TestDrivenDevelopmentByExample
         public Franc times(int multiplier)
         {
             return new Franc(amount * multiplier);
-        }
-
-        public override bool Equals(Object obj)
-        {
-            Franc franc = (Franc)obj;
-            return amount == franc.amount;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.amount;
-        }
+        } 
     }
 }
