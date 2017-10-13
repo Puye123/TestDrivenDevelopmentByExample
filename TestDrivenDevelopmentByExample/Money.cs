@@ -12,7 +12,7 @@ namespace TestDrivenDevelopmentByExample
         public override Boolean Equals(Object obj)
         {
             Money money = (Money)obj;
-            return amount == money.amount;
+            return amount == money.amount && GetType().Equals(money.GetType());
         }
 
         public override int GetHashCode()
