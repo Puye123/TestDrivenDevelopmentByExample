@@ -8,7 +8,7 @@ namespace TestDrivenDevelopmentByExample
 {
     public class Dollar
     {
-        public int amount;
+        private int amount;
         public Dollar(int amount)
         {
             this.amount = amount;
