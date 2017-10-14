@@ -12,7 +12,7 @@ namespace TestDrivenDevelopmentByExample.Tests
     public class MoneyTest
     {
         [TestMethod()]
-        public void testMultiplication()
+        public void TestMultiplication()
         {
             Money five = Money.Dollar(5);
             Assert.AreEqual(Money.Dollar(10), five.Times(2));
@@ -20,7 +20,7 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testEquality()
+        public void TestEquality()
         {
             Assert.IsTrue(Money.Dollar(5).Equals(Money.Dollar(5)));
             Assert.IsFalse(Money.Dollar(5).Equals(Money.Dollar(6)));
@@ -28,14 +28,14 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testCurrency()
+        public void TestCurrency()
         {
             Assert.AreEqual("USD", Money.Dollar(1).Currency());
             Assert.AreEqual("CHF", Money.Franc(1).Currency());
         }
 
         [TestMethod()]
-        public void testSimpleAddition()
+        public void TestSimpleAddition()
         {
             Money five = Money.Dollar(5);
 
@@ -46,7 +46,7 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testPlusReturnsSum()
+        public void TestPlusReturnsSum()
         {
             Money five = Money.Dollar(5);
             IExpression result = five.Plus(five);
@@ -56,7 +56,7 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testReduceSum()
+        public void TestReduceSum()
         {
             IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
             Bank bank = new Bank();
@@ -65,7 +65,7 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testReduceMoney()
+        public void TestReduceMoney()
         {
             Bank bank = new Bank();
             Money result = bank.Reduce(Money.Dollar(1), "USD");
@@ -73,7 +73,7 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testReduceMoneyDifferentCUrrency()
+        public void TestReduceMoneyDifferentCUrrency()
         {
             Bank bank = new Bank();
             bank.addRate("CHF", "USD", 2);
@@ -82,13 +82,13 @@ namespace TestDrivenDevelopmentByExample.Tests
         }
 
         [TestMethod()]
-        public void testIdentityRate()
+        public void TestIdentityRate()
         {
             Assert.AreEqual(1, new Bank().Rate(from: "USD", to: "USD"));
         }
 
         [TestMethod()]
-        public void testMixedAddtion()
+        public void TestMixedAddtion()
         {
             IExpression fiveBucks = Money.Dollar(5);
             IExpression tenFrancs = Money.Franc(10);
