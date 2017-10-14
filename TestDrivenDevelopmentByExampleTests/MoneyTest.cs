@@ -76,7 +76,7 @@ namespace TestDrivenDevelopmentByExample.Tests
         public void TestReduceMoneyDifferentCUrrency()
         {
             Bank bank = new Bank();
-            bank.addRate("CHF", "USD", 2);
+            bank.AddRate("CHF", "USD", 2);
             Money result = bank.Reduce(source: Money.Franc(2), to: "USD");
             Assert.AreEqual(Money.Dollar(1), result);
         }
@@ -93,9 +93,42 @@ namespace TestDrivenDevelopmentByExample.Tests
             IExpression fiveBucks = Money.Dollar(5);
             IExpression tenFrancs = Money.Franc(10);
             Bank bank = new Bank();
-            bank.addRate(from: "CHF", to: "USD", rate: 2);
+            bank.AddRate(from: "CHF", to: "USD", rate: 2);
             Money result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
             Assert.AreEqual(Money.Dollar(10), result);
         }
+
+        [TestMethod()]
+        public void TestSumPlusMoney()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.AddRate(from: "CHF", to: "USD", rate: 2);
+            IExpression sum = new Sum(fiveBucks, tenFrancs).Plus(fiveBucks);
+            Money result = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(15), result);
+        }
+
+        [TestMethod()]
+        public void TestSumTimes()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.AddRate(from: "CHF", to: "USD", rate: 2);
+            IExpression sum = new Sum(fiveBucks, tenFrancs).Times(2);
+            Money result = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(20), result);
+        }
+
+        /*
+        [TestMethod()]
+        public void TestPlusSameCurrencyReturnsMoney()
+        {
+            IExpression sum = Money.Dollar(1).Plus(Money.Dollar(1));
+            Assert.IsTrue(sum is Money);
+        }
+        */
     }
 }

@@ -15,7 +15,7 @@ namespace TestDrivenDevelopmentByExample
             return source.Reduce(this, to);
         }
 
-        public void addRate(string from, string to, int rate)
+        public void AddRate(string from, string to, int rate)
         {
             rates.Add(new Pair(from, to), rate);
         }

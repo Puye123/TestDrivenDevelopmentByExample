@@ -10,5 +10,6 @@ namespace TestDrivenDevelopmentByExample
     {
         Money Reduce(Bank bank, String to);
         IExpression Plus(IExpression addend);
+        IExpression Times(int mutiplier);
     }
 }

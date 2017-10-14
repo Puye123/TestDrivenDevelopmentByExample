@@ -21,7 +21,12 @@ namespace TestDrivenDevelopmentByExample
 
         public IExpression Plus(IExpression addend)
         {
-            return null;
+            return new Sum(this, addend);
+        }
+
+        public IExpression Times(int multiplier)
+        {
+            return new Sum(augend.Times(multiplier), addend.Times(multiplier));
         }
 
         public Money Reduce(Bank bank, string to)
