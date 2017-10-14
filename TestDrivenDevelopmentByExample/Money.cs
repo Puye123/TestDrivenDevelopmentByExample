@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace TestDrivenDevelopmentByExample
 {
-    public abstract class Money
+    public class Money
     {
         protected internal int amount;
         protected internal string currency;
-        public abstract Money Times(int multiplier);
+        public Money Times(int multiplier)
+        {
+            return new Money(amount * multiplier, currency);
+        }
 
         public Money(int amount, string currency)
         {
@@ -21,7 +24,7 @@ namespace TestDrivenDevelopmentByExample
         public override Boolean Equals(Object obj)
         {
             Money money = (Money)obj;
-            return amount == money.amount && GetType().Equals(money.GetType());
+            return amount == money.amount && Currency().Equals(money.Currency());
         }
 
         public override int GetHashCode()
@@ -42,6 +45,11 @@ namespace TestDrivenDevelopmentByExample
         public string Currency()
         {
             return this.currency;
+        }
+        
+        public override string ToString()
+        {
+            return amount.ToString() + " " + currency;
         }
     }
 }
