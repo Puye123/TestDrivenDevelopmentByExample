@@ -49,7 +49,12 @@ namespace TestDrivenDevelopmentByExample
 
         public IExpression Plus(Money addend)
         {
-            return new Money(amount + addend.amount, currency);
+            return new Sum(this, addend);
+        }
+
+        public Money Reduce(String to)
+        {
+            return this;
         }
 
         public override string ToString()

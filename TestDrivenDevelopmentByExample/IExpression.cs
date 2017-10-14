@@ -8,5 +8,6 @@ namespace TestDrivenDevelopmentByExample
 {
     public interface IExpression
     {
+        Money Reduce(String to);
     }
 }
