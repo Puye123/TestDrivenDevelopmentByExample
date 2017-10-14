@@ -86,5 +86,16 @@ namespace TestDrivenDevelopmentByExample.Tests
         {
             Assert.AreEqual(1, new Bank().Rate(from: "USD", to: "USD"));
         }
+
+        [TestMethod()]
+        public void testMixedAddtion()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.addRate(from: "CHF", to: "USD", rate: 2);
+            Money result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
+            Assert.AreEqual(Money.Dollar(10), result);
+        }
     }
 }

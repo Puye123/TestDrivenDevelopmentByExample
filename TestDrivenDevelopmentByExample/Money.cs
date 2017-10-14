@@ -10,7 +10,7 @@ namespace TestDrivenDevelopmentByExample
     {
         protected internal int amount;
         protected internal string currency;
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(amount * multiplier, currency);
         }
@@ -47,7 +47,7 @@ namespace TestDrivenDevelopmentByExample
             return this.currency;
         }
 
-        public IExpression Plus(Money addend)
+        public IExpression Plus(IExpression addend)
         {
             return new Sum(this, addend);
         }
