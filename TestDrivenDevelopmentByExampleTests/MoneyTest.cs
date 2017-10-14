@@ -71,5 +71,20 @@ namespace TestDrivenDevelopmentByExample.Tests
             Money result = bank.Reduce(Money.Dollar(1), "USD");
             Assert.AreEqual(Money.Dollar(1), result);
         }
+
+        [TestMethod()]
+        public void testReduceMoneyDifferentCUrrency()
+        {
+            Bank bank = new Bank();
+            bank.addRate("CHF", "USD", 2);
+            Money result = bank.Reduce(source: Money.Franc(2), to: "USD");
+            Assert.AreEqual(Money.Dollar(1), result);
+        }
+
+        [TestMethod()]
+        public void testIdentityRate()
+        {
+            Assert.AreEqual(1, new Bank().Rate(from: "USD", to: "USD"));
+        }
     }
 }

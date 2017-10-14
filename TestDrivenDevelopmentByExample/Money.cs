@@ -52,9 +52,10 @@ namespace TestDrivenDevelopmentByExample
             return new Sum(this, addend);
         }
 
-        public Money Reduce(String to)
+        public Money Reduce(Bank bank, String to)
         {
-            return this;
+            int rate = bank.Rate(currency, to);
+            return new Money(amount / rate, to);
         }
 
         public override string ToString()
