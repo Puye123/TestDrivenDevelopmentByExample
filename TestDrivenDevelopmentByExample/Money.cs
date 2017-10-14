@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestDrivenDevelopmentByExample
 {
-    public class Money
+    public class Money : IExpression
     {
         protected internal int amount;
         protected internal string currency;
@@ -46,7 +46,12 @@ namespace TestDrivenDevelopmentByExample
         {
             return this.currency;
         }
-        
+
+        public IExpression Plus(Money addend)
+        {
+            return new Money(amount + addend.amount, currency);
+        }
+
         public override string ToString()
         {
             return amount.ToString() + " " + currency;
