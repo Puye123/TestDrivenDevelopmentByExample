@@ -8,18 +8,13 @@ namespace TestDrivenDevelopmentByExample
 {
     public class Dollar : Money
     {
-        public Dollar(int amount)
-        {
-            this.amount = amount;
-        }
-
-        public Dollar()
+        public Dollar(int amount, string currency) : base(amount, currency) 
         {
         }
 
-        public override Money times(int multiplier)
+        public override Money Times(int multiplier)
         {
-            return new Dollar(amount * multiplier);
+            return Money.Dollar(amount * multiplier);
         }
     }
 }

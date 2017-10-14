@@ -9,7 +9,15 @@ namespace TestDrivenDevelopmentByExample
     public abstract class Money
     {
         protected internal int amount;
-        public abstract Money times(int multiplier);
+        protected internal string currency;
+        public abstract Money Times(int multiplier);
+
+        public Money(int amount, string currency)
+        {
+            this.amount = amount;
+            this.currency = currency;
+        }
+
         public override Boolean Equals(Object obj)
         {
             Money money = (Money)obj;
@@ -21,14 +29,19 @@ namespace TestDrivenDevelopmentByExample
             return this.amount;
         }
 
-        public static Money dollar(int amount)
+        public static Money Dollar(int amount)
         {
-            return new Dollar(amount);
+            return new Dollar(amount, "USD");
         }
 
-        public static Franc franc(int amount)
+        public static Money Franc(int amount)
         {
-            return new Franc(amount);
+            return new Franc(amount, "CHF");
+        }
+
+        public string Currency()
+        {
+            return this.currency;
         }
     }
 }

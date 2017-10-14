@@ -14,27 +14,34 @@ namespace TestDrivenDevelopmentByExample.Tests
         [TestMethod()]
         public void testMultiplication()
         {
-            Money five = Money.dollar(5);
-            Assert.AreEqual(Money.dollar(10), five.times(2));
-            Assert.AreEqual(Money.dollar(15), five.times(3));
+            Money five = Money.Dollar(5);
+            Assert.AreEqual(Money.Dollar(10), five.Times(2));
+            Assert.AreEqual(Money.Dollar(15), five.Times(3));
         }
 
         [TestMethod()]
         public void testEquality()
         {
-            Assert.IsTrue(Money.dollar(5).Equals(Money.dollar(5)));
-            Assert.IsFalse(Money.dollar(5).Equals(Money.dollar(6)));
-            Assert.IsTrue(Money.franc(5).Equals(Money.franc(5)));
-            Assert.IsFalse(Money.franc(5).Equals(Money.franc(6)));
-            Assert.IsFalse(Money.franc(5).Equals(Money.dollar(5)));
+            Assert.IsTrue(Money.Dollar(5).Equals(Money.Dollar(5)));
+            Assert.IsFalse(Money.Dollar(5).Equals(Money.Dollar(6)));
+            Assert.IsTrue(Money.Franc(5).Equals(Money.Franc(5)));
+            Assert.IsFalse(Money.Franc(5).Equals(Money.Franc(6)));
+            Assert.IsFalse(Money.Franc(5).Equals(Money.Dollar(5)));
         }
 
         [TestMethod()]
         public void testFrancMultiplication()
         {
-            Money five = Money.franc(5);
-            Assert.AreEqual(Money.franc(10), five.times(2));
-            Assert.AreEqual(Money.franc(15), five.times(3));
+            Money five = Money.Franc(5);
+            Assert.AreEqual(Money.Franc(10), five.Times(2));
+            Assert.AreEqual(Money.Franc(15), five.Times(3));
+        }
+
+        [TestMethod()]
+        public void testCurrency()
+        {
+            Assert.AreEqual("USD", Money.Dollar(1).Currency());
+            Assert.AreEqual("CHF", Money.Franc(1).Currency());
         }
     }
 }
